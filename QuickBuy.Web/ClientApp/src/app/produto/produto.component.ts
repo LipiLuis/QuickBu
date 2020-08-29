@@ -3,7 +3,7 @@ import { Component } from "@angular/core";
 
 @Component({
   selector: "app-Produto",
-  template: "<html><body> {{ obterNome() }} </body></html>"
+  templateUrl: "./produto.component.html"
 })
 export class ProdutoComponent {
   public nome: string;
