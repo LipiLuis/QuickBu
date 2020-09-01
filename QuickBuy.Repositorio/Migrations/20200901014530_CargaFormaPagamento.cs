@@ -25,9 +25,9 @@ namespace QuickBuy.Repositorio.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DeleteData(
-                table: "FormaPagamento",
-                keyColumn: "Id",
-                keyValue: 1);
+               table: "FormaPagamento",
+               keyColumn: "Id",
+               keyValue: 1);
 
             migrationBuilder.DeleteData(
                 table: "FormaPagamento",
