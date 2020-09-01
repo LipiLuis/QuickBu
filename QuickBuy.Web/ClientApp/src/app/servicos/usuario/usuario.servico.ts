@@ -46,4 +46,16 @@ export class UsuarioSevico {
     // this.baseURL = raiz do site que pode  ser exemplo.: http://www.quickbuy.com/
     return this.http.post<Usuario>(this.baseURL + "api/usuario/verificarUsuario", body, { headers });
   }
+
+  public cadastrarUsuario(usuario: Usuario): Observable<Usuario> {
+
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+    var body = {
+      nome: usuario.nome,
+      sobreNome: usuario.sobreNome,
+      email: usuario.email,
+      senha: usuario.senha,
+    }
+    return this.http.post<Usuario>(this.baseURL + "api/usuario", body, { headers })
+  }
 }
