@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioSevico } from '../servicos/usuario/usuario.servico';
+import { Usuario } from '../modelo/usuario';
 
 @Component({
   selector: 'app-nav-menu',
@@ -27,5 +28,9 @@ export class NavMenuComponent {
   sair() {
     this.usuarioServico.limpar_sessao();
     this.router.navigate(['/']);
+  }
+
+  get usuario() {
+    return this.usuarioServico.usuario;
   }
 }

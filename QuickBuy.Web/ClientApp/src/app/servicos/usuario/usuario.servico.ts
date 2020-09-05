@@ -1,6 +1,6 @@
-import { Injectable, inject, Inject } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { observable, Observable } from "rxjs";
+import { Observable } from "rxjs";
 import { Usuario } from "../../modelo/usuario";
 
 
@@ -32,30 +32,20 @@ export class UsuarioSevico {
     this._usuario = null;
   }
 
+  get headers(): HttpHeaders {
+    return new HttpHeaders().set('content-type', 'application/json');
+  }
+
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this.baseURL = baseUrl;
   }
 
   public verificarUsuario(usuario: Usuario): Observable<Usuario> {
-
-    const headers = new HttpHeaders().set('content-type', 'application/json');
-    var body = {
-      email: usuario.email,
-      senha: usuario.senha,
-    }
     // this.baseURL = raiz do site que pode  ser exemplo.: http://www.quickbuy.com/
-    return this.http.post<Usuario>(this.baseURL + "api/usuario/verificarUsuario", body, { headers });
+    return this.http.post<Usuario>(this.baseURL + "api/usuario/verificarUsuario", JSON.stringify(usuario), { headers: this.headers });
   }
 
   public cadastrarUsuario(usuario: Usuario): Observable<Usuario> {
-
-    const headers = new HttpHeaders().set('content-type', 'application/json');
-    var body = {
-      nome: usuario.nome,
-      sobreNome: usuario.sobreNome,
-      email: usuario.email,
-      senha: usuario.senha,
-    }
-    return this.http.post<Usuario>(this.baseURL + "api/usuario", body, { headers })
+    return this.http.post<Usuario>(this.baseURL + "api/usuario", JSON.stringify(usuario), { headers: this.headers });
   }
 }

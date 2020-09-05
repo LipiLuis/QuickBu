@@ -18,7 +18,8 @@ namespace QuickBuy.Repositorio.Config
                 .IsRequired()
                 .HasMaxLength(50);
             builder
-                .Property(p => p.Preço)
+                .Property(p => p.Preco)
+                .HasColumnName("decimal(19,4)")
                 .IsRequired();
             builder
                 .Property(p => p.Descricao)

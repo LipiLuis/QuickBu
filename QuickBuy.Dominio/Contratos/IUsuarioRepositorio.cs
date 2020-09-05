@@ -9,5 +9,7 @@ namespace QuickBuy.Dominio.Contratos
     {
 
         Usuario obter(string email, string senha);
+
+        Usuario obter(string email);
     }
 }
